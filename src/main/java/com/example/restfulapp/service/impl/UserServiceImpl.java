@@ -2,20 +2,20 @@ package com.example.restfulapp.service.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
-import com.example.restfulapp.io.entity.UserEntity;
-import com.example.restfulapp.io.repository.UserRepository;
+import com.example.restfulapp.entity.UserEntity;
+import com.example.restfulapp.repository.UserRepository;
 import com.example.restfulapp.model.shared.dto.UserDTO;
 import com.example.restfulapp.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
+
+
 	@Override
 	public UserDTO create(UserDTO user) {
 		UserEntity userEntity= new UserEntity();

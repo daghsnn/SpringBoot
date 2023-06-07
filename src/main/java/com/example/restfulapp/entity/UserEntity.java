@@ -1,4 +1,4 @@
-package com.example.restfulapp.io.entity;
+package com.example.restfulapp.entity;
 
 import java.io.Serializable;
 
