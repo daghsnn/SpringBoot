@@ -1,5 +1,7 @@
 package com.example.restfulapp.controller;
 
+import com.example.restfulapp.entity.UserEntity;
+import com.example.restfulapp.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,25 +20,24 @@ import com.example.restfulapp.service.UserService;
 
 
 @RestController
-@RequestMapping("/AAA")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired
 	UserService service;
-
-
 	@GetMapping
 	public String getUser() {
 		return "User";
 	}
 	
-	@PostMapping("/aa")
-	public String createUser(@RequestBody UserRequestModel userRequestModel) {
-		UserResponse response = new UserResponse();
-		UserDTO user = new UserDTO();
-		BeanUtils.copyProperties(userRequestModel, user);
-		UserDTO userCreated = service.create(user);
-		BeanUtils.copyProperties(userCreated, response);
-		return user.getEmail();
+	@PostMapping("/create")
+	public UserResponse createUser(@RequestBody UserRequestModel userRequestModel) {
+		UserResponse returnValue = new UserResponse();
+		UserDTO userDTO = new UserDTO();
+		BeanUtils.copyProperties(userRequestModel,userDTO);
+
+		UserDTO createdUser = service.create(userDTO);
+		BeanUtils.copyProperties(createdUser,returnValue);
+		return returnValue;
 	}
 	
 	@PutMapping

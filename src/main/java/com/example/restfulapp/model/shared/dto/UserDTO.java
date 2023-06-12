@@ -1,20 +1,23 @@
 package com.example.restfulapp.model.shared.dto;
 
 public class UserDTO {
-	private long id;	
+	private String userId;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String password;
 	private String encryptedPassword;
 	private String emailVerificationToken;
-	private boolean emailVerificationStatus;
-	public long getId() {
-		return id;
+	private boolean emailVerificationStatus = false;
+
+	public String getUserId() {
+		return userId;
 	}
-	public void setId(long id) {
-		this.id = id;
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}

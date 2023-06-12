@@ -1,18 +1,20 @@
 package com.example.restfulapp.entity;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
+
+@Entity(name = "Users")
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = -6486681663120088088L;
 	
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private long id;
 	
 	@Column(nullable = false)
@@ -24,7 +26,7 @@ public class UserEntity implements Serializable {
 	@Column(nullable = false, length = 50)
 	private String lastName;
 	
-	@Column(nullable = false, length = 120)
+	@Column(nullable = false, length = 120, unique = true)
 	private String email;
 	
 	@Column(nullable = false)
@@ -33,7 +35,7 @@ public class UserEntity implements Serializable {
 	private String emailVerificationToken;
 	
 	@Column(nullable = false, columnDefinition = "boolean default false")
-	private String emailVerificationStatus;
+	private Boolean emailVerificationStatus;
 
 	public long getId() {
 		return id;
@@ -91,11 +93,11 @@ public class UserEntity implements Serializable {
 		this.emailVerificationToken = emailVerificationToken;
 	}
 
-	public String getEmailVerificationStatus() {
+	public Boolean getEmailVerificationStatus() {
 		return emailVerificationStatus;
 	}
 
-	public void setEmailVerificationStatus(String emailVerificationStatus) {
+	public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
 		this.emailVerificationStatus = emailVerificationStatus;
 	}		
 }
